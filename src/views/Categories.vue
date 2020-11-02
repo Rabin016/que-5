@@ -50,8 +50,12 @@ export default {
     methods: {
         ...mapActions(["addCategory", "deleteCategory"]),
         submitCategory() {
-            this.addCategory(this.category)
-            this.category = ""
+            if (this.category) {
+                this.addCategory(this.category)
+                this.category = ""
+            } else {
+                alert("Category name cannot be empty")
+            }
         },
         delCategory(categoryName) {
             this.deleteCategory(categoryName)

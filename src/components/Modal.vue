@@ -127,16 +127,24 @@ export default {
             console.log(this.categories)
         },
         submitNewCategory() {
-            this.addCategory(this.newCategory)
-            this.newCategory = ""
-            this.showCategoryInput = false
+            if (this.newCategory) {
+                this.addCategory(this.newCategory)
+                this.newCategory = ""
+                this.showCategoryInput = false
+            } else {
+                alert("Category name cannot be empty")
+            }
         },
         submitNewPost() {
-            this.newPost._id = uuidv4()
-            this.addPost(this.newPost)
-            this.newPost.title = ""
-            this.newPost.categories = []
-            this.loadPosts()
+            if (this.newPost.title) {
+                this.newPost._id = uuidv4()
+                this.addPost(this.newPost)
+                this.newPost.title = ""
+                this.newPost.categories = []
+                this.loadPosts()
+            } else {
+                alert("Post title cannot be empty")
+            }
         },
     },
     computed: {
